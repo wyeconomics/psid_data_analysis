@@ -127,6 +127,24 @@ head(str_df)
 
 ## Marriage related Variables {background-image="images/main.jpg"}
 
+| Variable | Available years | Level |
+|:----:|:------------:|:------------------:|
+| [Marital Status(Head)](https://simba.isr.umich.edu/cb.aspx?vList=ER78025) |   1977-2021    |      Family       |
+| [Last known marital status](https://simba.isr.umich.edu/cb.aspx?vList=ER32049) |   All years(1968-2021)    |      Individual       |
+| [Married Pairs Indicator](https://simba.isr.umich.edu/cb.aspx?vList=ER34907) |   All years    |      Individual       |
+| [Change in Martial Status](https://simba.isr.umich.edu/cb.aspx?vList=ER81929) |   1977-2021    |      Family       |
+| [# of Marriages](https://simba.isr.umich.edu/cb.aspx?vList=ER32034) |   All years    |      Individual       |
+| [Month of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32035) |   All years    |      Individual       |
+| [Year of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32036) |   All years    |      Individual       |
+| [Month of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32040) |   All years    |      Individual       |
+| [Year of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32041) |   All years    |      Individual       |
+| [Status of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32044) |   All years    |      Individual       |
+| [Month Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32047) |   All years    |      Individual       |
+| [Year Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32048) |   All years    |      Individual       |
+| [Month ended of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32045) |   All years    |      Individual       |
+| [Year ended of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32046) |   All years    |      Individual       |
+
+
 ## Data Availability {background-image="images/main.jpg"}
 
 <p style="text-align: justify;">
