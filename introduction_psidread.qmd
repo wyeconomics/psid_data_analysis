@@ -138,6 +138,11 @@ head(str_df)
 | [Year of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32036) |   All years    |      Individual       |
 | [Month of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32040) |   All years    |      Individual       |
 | [Year of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32041) |   All years    |      Individual       |
+
+## Marriage related Variables {background-image="images/main.jpg"}
+
+| Variable | Available years | Level |
+|:----:|:------------:|:------------------:|
 | [Status of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32044) |   All years    |      Individual       |
 | [Month Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32047) |   All years    |      Individual       |
 | [Year Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32048) |   All years    |      Individual       |
