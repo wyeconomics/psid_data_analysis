@@ -1,9 +1,0 @@
-"0","#| echo: true"
-"0","#| error: true "
-"0","psid_df <- psid_read(indir = output_directory,"
-"0","                     str_df = str_df,"
-"0","                     idvars = c('ER30000'),"
-"0","                     type = 'package',"
-"0","                     filename = NA)"
-"2","Error in gzfile(file) : invalid 'description' argument
-"

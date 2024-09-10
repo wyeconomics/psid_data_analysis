@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="introduction_psidread_files/libs/clipboard/clipboard.min.js"></script>
-<script src="introduction_psidread_files/libs/quarto-html/tabby.min.js"></script>
-<script src="introduction_psidread_files/libs/quarto-html/popper.min.js"></script>
-<script src="introduction_psidread_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="introduction_psidread_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="introduction_psidread_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="introduction_psidread_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="introduction_psidread_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="mating_meetings_0909_files/libs/clipboard/clipboard.min.js"></script>
+<script src="mating_meetings_0909_files/libs/quarto-html/tabby.min.js"></script>
+<script src="mating_meetings_0909_files/libs/quarto-html/popper.min.js"></script>
+<script src="mating_meetings_0909_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="mating_meetings_0909_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="mating_meetings_0909_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="mating_meetings_0909_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="mating_meetings_0909_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Wooyong Park">
   <meta name="dcterms.date" content="2024-09-11">
-  <title>PSID Data Progress</title>
+  <title>Progress Report</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="introduction_psidread_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="introduction_psidread_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="mating_meetings_0909_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="mating_meetings_0909_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -96,11 +96,11 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="introduction_psidread_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="introduction_psidread_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="introduction_psidread_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="introduction_psidread_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="introduction_psidread_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="mating_meetings_0909_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="mating_meetings_0909_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="mating_meetings_0909_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="mating_meetings_0909_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="mating_meetings_0909_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/title.png" class="quarto-title-block center">
-  <h1 class="title">PSID Data Progress</h1>
+  <h1 class="title">Progress Report</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,21 +404,18 @@ Wooyong Park
 
   <p class="date">2024-09-11</p>
 </section>
-<section id="overview" class="slide level2" data-background-image="images/main.jpg">
+<section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
 <li>How the PSID dataset looks like</li>
-<li>Package Introduction(<code>psidread</code>)</li>
-<li>Challenges</li>
-<li>Marriage Related Variables</li>
+<li>Marriage Related Variables and Availability</li>
+<li>Sample Data Analysis(State Level)</li>
+<li>Package Introduction and Progress</li>
+<li>Further Investigation Plan</li>
 <li>Data Application Process</li>
 </ul>
 </section>
-<section id="raw-data-and-psidread" class="slide level2" data-background-image="images/main.jpg">
-<h2>Raw data and <a href="https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html"><code>psidread</code></a></h2>
-<p><a href="https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html"><code>psidread</code></a> is a package written by Shuyi Qiu to help access PSID data in R. Although the PSID is the longest running longitudinal household survey data in the world, the process of converting raw PSID data files into datasets ready for analysis is quite complex.</p>
-</section>
-<section id="section" class="slide level2" data-background-image="images/main.jpg">
+<section id="section" class="slide level2">
 <h2></h2>
 <p>This is what the raw dataset looks like</p>
 <div class="cell">
@@ -3508,12 +3505,11 @@ Wooyong Park
 6       9       9       9       9       9       5  77.024</code></pre>
 </div>
 </div>
+<p><a href="https://simba.isr.umich.edu/default.aspx" style="position: absolute; bottom: 10px; right: 10px; font-size: smaller; color: blue;">PSID Data Center</a></p>
 </section>
-<section id="challenges-in-accessing-data" class="slide level2" data-background-image="images/main.jpg">
-<h2>Challenges in Accessing Data</h2>
-<ol type="1">
-<li>Variable Names</li>
-</ol>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<p>Variable names should be modified and be processed so that the researcher can use via <a href="https://github.com/cran/psidread">3rd party packages</a>.</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -3546,90 +3542,8 @@ Wooyong Park
 </tbody>
 </table>
 </section>
-<section id="challenges-in-accessing-data-1" class="slide level2" data-background-image="images/main.jpg">
-<h2>Challenges in Accessing Data</h2>
-<ol start="2" type="1">
-<li>Missing Waves</li>
-</ol>
-<p>“In the PSID, survey questions vary across different waves, leading to some variables not being consistently available in all waves. Detailed information about the inclusion of specific questions in each wave is accessible only on the <a href="https://simba.isr.umich.edu/DC/i.aspx">cross-year index webpage</a>, a method that is <strong>not user-friendly</strong> for quick reference. Manually creating a list of variables for different years is an option, but it is tedious and inconvenient.”</p>
-<p>What I did to check available waves is to search the variable content in the <a href="https://simba.isr.umich.edu/DC/s.aspx">data center</a></p>
-</section>
-<section id="psidread-package-helps" class="slide level2" data-background-image="images/main.jpg">
-<h2><code>psidread</code> package helps</h2>
-<ul>
-<li>create a table of data structure across multiple waves using the text that can be copied and pasted from the website</li>
-<li>unzip and convert the zipped files without additional help of other software</li>
-<li>read and merge the data files from multiple waves</li>
-<li>rename and reshape the dataset to fit the need for advanced analysis</li>
-</ul>
-<p><span style="position: absolute; bottom: 10px; right: 10px; font-size: smaller; color: gray;">For more information, please visit <a href="https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html#1_Introduction">the CRAN vignettes of the author</a>.</span></p>
-</section>
-<section id="downloading-the-data" class="slide level2" data-background-image="images/main.jpg">
-<h2>Downloading the data</h2>
-
-<img data-src="images/psid_data_center.png" class="r-stretch quarto-figure-center"><p class="caption">psid data webpage</p></section>
-<section>
-<section id="actual-use-of-the-psidread-package" class="title-slide slide level1 center" data-background-image="images/title.png">
-<h1>Actual use of the psidread package</h1>
-
-</section>
-<section id="dag-of-psidread-workflow" class="slide level2" data-background-image="images/main.jpg">
-<h2>DAG of <code>psidread</code> workflow</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img src="images/psid_read.png" width="300" height="500"></p>
-</div><div class="column" style="width:70%;">
-<p>Example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(psidread)</span>
-<span id="cb3-2"><a href=""></a>psid_varlist <span class="ot">=</span> <span class="fu">c</span>(<span class="st">" hh_age || [13]ER53017 [17]ER66017"</span>,</span>
-<span id="cb3-3"><a href=""></a>                 <span class="st">" p_age || [13]ER34204"</span>)</span>
-<span id="cb3-4"><a href=""></a><span class="fu">psid_str</span>(<span class="at">varlist =</span> psid_varlist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year  hh_age   p_age
-2 2013 ER53017 ER34204
-3 2017 ER66017    &lt;NA&gt;</code></pre>
-</div>
-</div>
-</div></div>
-</section>
-<section id="section-1" class="slide level2" data-background-image="images/main.jpg">
-<h2></h2>
-<p>In our case,</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">library</span>(psidread)</span>
-<span id="cb5-2"><a href=""></a></span>
-<span id="cb5-3"><a href=""></a>input_directory <span class="ot">&lt;-</span> <span class="st">'data'</span></span>
-<span id="cb5-4"><a href=""></a>output_directory <span class="ot">&lt;-</span> <span class="st">'data'</span></span>
-<span id="cb5-5"><a href=""></a>str_df <span class="ot">&lt;-</span> <span class="fu">psid_str</span>(</span>
-<span id="cb5-6"><a href=""></a>  <span class="at">varlist =</span> <span class="fu">c</span>(<span class="st">'pair_id ||   [68]ER30005 [69]ER30024 [70]ER30047 [71]ER30071 [72]ER30095 [73]ER30121 [74]ER30142 [75]ER30164 [76]ER30192 [77]ER30221 [78]ER30250 [79]ER30287 [80]ER30317 [81]ER30347 [82]ER30377 [83]ER30405 [84]ER30435 [85]ER30469 [86]ER30504 [87]ER30541 [88]ER30576 [89]ER30612 [90]ER30648 [91]ER30695 [92]ER30739 [93]ER30812 [94]ER33107 [95]ER33207 [96]ER33307 [97]ER33407 [99]ER33507 [01]ER33607 [03]ER33707 [05]ER33807 [07]ER33907 [09]ER34007 [11]ER34107 [13]ER34207 [15]ER34308 [17]ER34507 [19]ER34707 [21]ER34907'</span>,</span>
-<span id="cb5-7"><a href=""></a>              <span class="st">'hh_marst_old || [68]V239 [69]V607 [70]V1365 [71]V2072 [72]V2670 [73]V3181 [74]V3598 [75]V4053 [76]V4603 [77]V5650 [78]V6197 [79]V6790 [80]V7435 [81]V8087 [82]V8711 [83]V9419 [84]V11065 [85]V12426 [86]V13665 [87]V14712 [88]V16187 [89]V17565 [90]V18916 [91]V20216 [92]V21522 [93]V23336 [94]ER4159A [95]ER6999A [96]ER9250A [97]ER12223A [99]ER16423 [01]ER20369 [03]ER24150 [05]ER28049 [07]ER41039 [09]ER46983 [11]ER52407 [13]ER58225 [15]ER65461 [17]ER71540 [19]ER77601 [21]ER81928'</span>,</span>
-<span id="cb5-8"><a href=""></a>              <span class="st">'hh_marst || [77]V5502 [78]V6034 [79]V6659 [80]V7261 [81]V7952 [82]V8603 [83]V9276 [84]V10426 [85]V11612 [86]V13017 [87]V14120 [88]V15136 [89]V16637 [90]V18055 [91]V19355 [92]V20657 [93]V22412 [94]ER2014 [95]ER5013 [96]ER7013 [97]ER10016 [99]ER13021 [01]ER17024 [03]ER21023 [05]ER25023 [07]ER36023 [09]ER42023 [11]ER47323 [13]ER53023 [15]ER60024 [17]ER66024 [19]ER72024 [21]ER78025'</span>,</span>
-<span id="cb5-9"><a href=""></a>              <span class="st">'fam_comp_change || [69]V542 [70]V1109 [71]V1809 [72]V2410 [73]V3010 [74]V3410 [75]V3810 [76]V4310 [77]V5210 [78]V5710 [79]V6310 [80]V6910 [81]V7510 [82]V8210 [83]V8810 [84]V10010 [85]V11112 [86]V12510 [87]V13710 [88]V14810 [89]V16310 [90]V17710 [91]V19010 [92]V20310 [93]V21608 [94]ER2005A [95]ER5004A [96]ER7004A [97]ER10004A [99]ER13008A [01]ER17007 [03]ER21007 [05]ER25007 [07]ER36007 [09]ER42007 [11]ER47307 [13]ER53007 [15]ER60007 [17]ER66007 [19]ER72007 [21]ER78007'</span>,</span>
-<span id="cb5-10"><a href=""></a>              <span class="st">'marst_change || [77]V5680 [78]V6219 [79]V6812 [80]V7455 [81]V8107 [82]V8731 [83]V9420 [84]V11066 [85]V12427 [86]V13666 [87]V14713 [88]V16188 [89]V17566 [90]V18917 [91]V20217 [92]V21523 [93]V23337 [94]ER4159B [95]ER6999B [96]ER9250B [97]ER12223B [99]ER16424 [01]ER20370 [03]ER24151 [05]ER28050 [07]ER41040 [09]ER46984 [11]ER52408 [13]ER58226 [15]ER65462 [17]ER71541 [19]ER77602 [21]ER81929'</span>,</span>
-<span id="cb5-11"><a href=""></a>              <span class="st">'state || [68]V93 [69]V537 [70]V1103 [71]V1803 [72]V2403 [73]V3003 [74]V3403 [75]V3803 [76]V4303 [77]V5203 [78]V5703 [79]V6303 [80]V6903 [81]V7503 [82]V8203 [83]V8803 [84]V10003 [85]V11103 [86]V12503 [87]V13703 [88]V14803 [89]V16303 [90]V17703 [91]V19003 [92]V20303 [93]V21603 [94]ER4156 [95]ER6996 [96]ER9247 [97]ER12221 [99]ER13004 [01]ER17004 [03]ER21003 [05]ER25003 [07]ER36003 [09]ER42003 [11]ER47303 [13]ER53003 [15]ER60003 [17]ER66003 [19]ER72003 [21]ER78003'</span></span>
-<span id="cb5-12"><a href=""></a>              )</span>
-<span id="cb5-13"><a href=""></a>  </span>
-<span id="cb5-14"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="section-2" class="slide level2" data-background-image="images/main.jpg">
-<h2></h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">head</span>(str_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  year pair_id hh_marst_old hh_marst fam_comp_change marst_change state
-2 1968 ER30005         V239     &lt;NA&gt;            &lt;NA&gt;         &lt;NA&gt;   V93
-3 1969 ER30024         V607     &lt;NA&gt;            V542         &lt;NA&gt;  V537
-4 1970 ER30047        V1365     &lt;NA&gt;           V1109         &lt;NA&gt; V1103
-5 1971 ER30071        V2072     &lt;NA&gt;           V1809         &lt;NA&gt; V1803
-6 1972 ER30095        V2670     &lt;NA&gt;           V2410         &lt;NA&gt; V2403
-7 1973 ER30121        V3181     &lt;NA&gt;           V3010         &lt;NA&gt; V3003</code></pre>
-</div>
-</div>
-</section>
-<section id="marriage-related-variables" class="slide level2" data-background-image="images/main.jpg">
-<h2>Marriage related Variables</h2>
+<section id="marriage-related-variables-and-availability" class="slide level2">
+<h2>Marriage related variables and availability</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -3646,7 +3560,7 @@ Wooyong Park
 </tr>
 <tr class="even">
 <td style="text-align: center;"><a href="https://simba.isr.umich.edu/cb.aspx?vList=ER32049">Last known marital status</a></td>
-<td style="text-align: center;">All years(1968-2021)</td>
+<td style="text-align: center;">All years</td>
 <td style="text-align: center;">Individual</td>
 </tr>
 <tr class="odd">
@@ -3687,8 +3601,8 @@ Wooyong Park
 </tbody>
 </table>
 </section>
-<section id="marriage-related-variables-1" class="slide level2" data-background-image="images/main.jpg">
-<h2>Marriage related Variables</h2>
+<section id="marriage-related-variables-and-availability-1" class="slide level2">
+<h2>Marriage related variables and availability</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -3726,20 +3640,92 @@ Wooyong Park
 </tbody>
 </table>
 </section>
-<section id="data-availability" class="slide level2" data-background-image="images/main.jpg">
-<h2>Data Availability</h2>
+<section id="geographic-level-of-variables" class="slide level2">
+<h2>Geographic level of variables</h2>
 <p style="text-align: justify;">
-</p><p><strong>Only state level residence is publicly open.</strong> Finer levels including county, tract, block, zip code, MSA, CBSA and FIPS are all restricted. I explain the details of accessing details not before long.</p>
+</p><p><strong>Only state level residence is publicly open.</strong> Finer levels including county, tract, block, zip code, MSA, CBSA and FIPS are all restricted. I’ll explain the details of accessing details not before long.</p>
 <p></p>
 </section>
-<section id="current-progress" class="slide level2" data-background-image="images/main.jpg">
-<h2>Current Progress</h2>
-<p><code>psidread</code> is the only available package for now. (Several other packages including <code>psidr</code>, <code>easypsid</code> are outdated.)</p>
-<p>However, it returns handful of errors at every stage of its functions.</p>
-<p>Last time I fixed issues with handling singular data, and I recently started fixing issues with handling packaged data.</p>
+<section id="sample-data-analysismale-no-weight" class="slide level2">
+<h2>Sample Data Analysis(Male, No weight)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysismale-no-weight-1" class="slide level2">
+<h2>Sample Data Analysis(Male, No weight)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysismale-weighted" class="slide level2">
+<h2>Sample Data Analysis(Male, Weighted)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysismale-weighted-1" class="slide level2">
+<h2>Sample Data Analysis(Male, Weighted)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysisfemale-no-weight" class="slide level2">
+<h2>Sample Data Analysis(Female, No weight)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysisfemale-no-weight-1" class="slide level2">
+<h2>Sample Data Analysis(Female, No weight)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysisfemale-weighted" class="slide level2">
+<h2>Sample Data Analysis(Female, Weighted)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="sample-data-analysisfemale-weighted-1" class="slide level2">
+<h2>Sample Data Analysis(Female, Weighted)</h2>
+
+<img data-src="mating_meetings_0909_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="package-introduction-and-related-progress" class="slide level2">
+<h2>Package introduction and related progress</h2>
+<p><a href="https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html"><code>psidread</code></a> is a package written by Shuyi Qiu to help access PSID data in R. Although the PSID is the longest running longitudinal household survey data in the world, the process of converting raw PSID data files into datasets ready for analysis is quite complex.</p>
 </section>
-<section id="current-progress-1" class="slide level2" data-background-image="images/main.jpg">
-<h2>Current Progress</h2>
+<section id="package-introduction-and-related-progress-1" class="slide level2">
+<h2>Package introduction and related progress</h2>
+<p><a href="https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html"><code>psidread</code></a> helps</p>
+<p><br></p>
+<ul>
+<li>create a table of data structure across multiple waves using the text that can be copied and pasted from the website</li>
+<li>unzip and convert the zipped files without additional help of other software</li>
+<li>read and merge the data files from multiple waves</li>
+<li>rename and reshape the dataset to fit the need for advanced analysis</li>
+</ul>
+<p><span style="position: absolute; bottom: 10px; right: 10px; font-size: smaller; color: gray;">For more information, please visit <a href="https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html#1_Introduction">the CRAN vignettes of the author</a>.</span></p>
+</section>
+<section id="downloading-the-data" class="slide level2">
+<h2>Downloading the data</h2>
+
+<img data-src="images/psid_data_center.png" class="r-stretch quarto-figure-center"><p class="caption">psid data webpage</p></section>
+<section id="dag-of-psidread-workflow" class="slide level2">
+<h2>DAG of <code>psidread</code> workflow</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img src="images/psid_read.png" width="300" height="500"></p>
+</div><div class="column" style="width:70%;">
+<p>Example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(psidread)</span>
+<span id="cb3-2"><a href=""></a>psid_varlist <span class="ot">=</span> <span class="fu">c</span>(<span class="st">" hh_age || [13]ER53017 [17]ER66017"</span>,</span>
+<span id="cb3-3"><a href=""></a>                 <span class="st">" p_age || [13]ER34204"</span>)</span>
+<span id="cb3-4"><a href=""></a><span class="fu">psid_str</span>(<span class="at">varlist =</span> psid_varlist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year  hh_age   p_age
+2 2013 ER53017 ER34204
+3 2017 ER66017    &lt;NA&gt;</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="current-progress-on-psidread" class="slide level2">
+<h2>Current Progress on <code>psidread</code></h2>
+<p><code>psidread</code> is the only available package for now in R. (Several other packages including <code>psidr</code>, <code>easypsid</code> are outdated.)</p>
+<p>However, it returns handful of errors at most stages of its functions.</p>
+<p>The issues on the singular data are now solved, but for some reason <code>psidread</code> is still giving me errors when using packaged data.</p>
+</section>
+<section id="current-progress-on-psidread-1" class="slide level2">
+<h2>Current Progress on <code>psidread</code></h2>
 <div title="`psidread::psid_read()`">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -3754,13 +3740,13 @@ Wooyong Park
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>psid_df <span class="ot">&lt;-</span> <span class="fu">psid_read</span>(<span class="at">indir =</span> output_directory,</span>
-<span id="cb8-2"><a href=""></a>                     <span class="at">str_df =</span> str_df,</span>
-<span id="cb8-3"><a href=""></a>                     <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">'ER30000'</span>),</span>
-<span id="cb8-4"><a href=""></a>                     <span class="at">type =</span> <span class="st">'package'</span>,</span>
-<span id="cb8-5"><a href=""></a>                     <span class="at">filename =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>psid_df <span class="ot">&lt;-</span> <span class="fu">psid_read</span>(<span class="at">indir =</span> output_directory,</span>
+<span id="cb5-2"><a href=""></a>                     <span class="at">str_df =</span> str_df,</span>
+<span id="cb5-3"><a href=""></a>                     <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">'ER30000'</span>),</span>
+<span id="cb5-4"><a href=""></a>                     <span class="at">type =</span> <span class="st">'package'</span>,</span>
+<span id="cb5-5"><a href=""></a>                     <span class="at">filename =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection</code></pre>
+<pre><code>Error in eval(expr, envir, enclos): object 'output_directory' not found</code></pre>
 </div>
 </div>
 </div>
@@ -3782,8 +3768,8 @@ Wooyong Park
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>name_fam_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> indir, <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="st">".*fam"</span>,yr,<span class="st">".*</span><span class="sc">\\</span><span class="st">.rda"</span>,<span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb10-2"><a href=""></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste</span>(indir,name_fam_df,<span class="at">sep=</span><span class="st">"/"</span>), <span class="at">envir =</span> temp_env)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>name_fam_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> indir, <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="st">".*fam"</span>,yr,<span class="st">".*</span><span class="sc">\\</span><span class="st">.rda"</span>,<span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb7-2"><a href=""></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste</span>(indir,name_fam_df,<span class="at">sep=</span><span class="st">"/"</span>), <span class="at">envir =</span> temp_env)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection</code></pre>
 </div>
@@ -3792,8 +3778,16 @@ Wooyong Park
 </div>
 </div>
 </div>
+<p>Found that the package relies on additional <em>wealth data file</em>, while it seems like PSID is no longer providing the data.(I emailed psid data center days ago to ask if they still provide them.)</p>
 </section>
-<section id="application-processpsid-data" class="slide level2" data-background-image="images/main.jpg">
+<section id="further-investigation-plan" class="slide level2">
+<h2>Further investigation plan</h2>
+<ul>
+<li>get access of the MSA level data</li>
+<li>check how I can utilize the individual-level data to perform data analysis</li>
+</ul>
+</section>
+<section id="application-processpsid-data" class="slide level2">
 <h2>Application Process(PSID data)</h2>
 <ul>
 <li>Contract must be made between user’s institution and UMichigan</li>
@@ -3815,24 +3809,24 @@ Wooyong Park
 <p>Assortative Mating in Cities</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="introduction_psidread_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="introduction_psidread_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="introduction_psidread_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="introduction_psidread_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="mating_meetings_0909_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

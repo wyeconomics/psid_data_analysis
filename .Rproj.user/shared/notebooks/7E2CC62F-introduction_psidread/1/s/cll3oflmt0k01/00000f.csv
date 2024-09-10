@@ -1,9 +1,0 @@
-"0","#| echo: true"
-"0","library(psidread)"
-"2","Registered S3 method overwritten by 'data.table':
-  method           from
-  print.data.table     
-"
-"0","psid_varlist = c("" hh_age || [13]ER53017 [17]ER66017"","
-"0","                 "" p_age || [13]ER34204"")"
-"0","psid_str(varlist = psid_varlist)"

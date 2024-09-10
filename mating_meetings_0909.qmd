@@ -1,5 +1,5 @@
 ---
-title: "PSID Data Progress"
+title: "Progress Report"
 author: "Wooyong Park"
 date: '2024-09-11'
 format: 
@@ -15,19 +15,16 @@ format:
 
 ```
 
-## Overview {background-image="images/main.jpg"}
+## Overview
 
 -   How the PSID dataset looks like
--   Package Introduction(`psidread`)
--   Challenges
--   Marriage Related Variables
+-   Marriage Related Variables and Availability
+-   Sample Data Analysis(State Level)
+-   Package Introduction and Progress
+-   Further Investigation Plan
 -   Data Application Process
 
-## Raw data and [`psidread`](https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html) {background-image="images/main.jpg"}
-
-[`psidread`](https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html) is a package written by Shuyi Qiu to help access PSID data in R. Although the PSID is the longest running longitudinal household survey data in the world, the process of converting raw PSID data files into datasets ready for analysis is quite complex.
-
-##  {background-image="images/main.jpg"}
+## 
 
 This is what the raw dataset looks like
 
@@ -40,10 +37,11 @@ load('data/fam2021er.rda')
 head(fam2021er)
 
 ```
+<a href="https://simba.isr.umich.edu/default.aspx" style="position: absolute; bottom: 10px; right: 10px; font-size: smaller; color: blue;">PSID Data Center</a>
 
-## Challenges in Accessing Data {background-image="images/main.jpg"}
+## 
 
-1.  Variable Names
+Variable names should be modified and be processed so that the researcher can use via [3rd party packages](https://github.com/cran/psidread).
 
 | Year | hh education | number of children |
 |:----:|:------------:|:------------------:|
@@ -52,15 +50,262 @@ head(fam2021er)
 | 2017 |   ER71538    |      ER66021       |
 | 2019 |   ER77599    |      ER72021       |
 
-## Challenges in Accessing Data {background-image="images/main.jpg"}
+## Marriage related variables and availability
 
-2.  Missing Waves
+|                                    Variable                                    | Available years |   Level    |
+|:---------------------------------------:|:--------------:|:--------------:|
+|   [Marital Status(Head)](https://simba.isr.umich.edu/cb.aspx?vList=ER78025)    |    1977-2021    |   Family   |
+| [Last known marital status](https://simba.isr.umich.edu/cb.aspx?vList=ER32049) |    All years    | Individual |
+|  [Married Pairs Indicator](https://simba.isr.umich.edu/cb.aspx?vList=ER34907)  |    All years    | Individual |
+| [Change in Martial Status](https://simba.isr.umich.edu/cb.aspx?vList=ER81929)  |    1977-2021    |   Family   |
+|      [\# of Marriages](https://simba.isr.umich.edu/cb.aspx?vList=ER32034)      |    All years    | Individual |
+|  [Month of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32035)  |    All years    | Individual |
+|  [Year of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32036)   |    All years    | Individual |
+| [Month of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32040) |    All years    | Individual |
+| [Year of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32041)  |    All years    | Individual |
 
-"In the PSID, survey questions vary across different waves, leading to some variables not being consistently available in all waves. Detailed information about the inclusion of specific questions in each wave is accessible only on the [cross-year index webpage](https://simba.isr.umich.edu/DC/i.aspx), a method that is **not user-friendly** for quick reference. Manually creating a list of variables for different years is an option, but it is tedious and inconvenient."
+## Marriage related variables and availability
 
-What I did to check available waves is to search the variable content in the [data center](https://simba.isr.umich.edu/DC/s.aspx)
+|                                           Variable                                           | Available years |   Level    |
+|:-----------------------------------------:|:-------------:|:-------------:|
+|     [Status of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32044)      |    All years    | Individual |
+| [Month Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32047) |    All years    | Individual |
+| [Year Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32048)  |    All years    | Individual |
+|   [Month ended of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32045)   |    All years    | Individual |
+|   [Year ended of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32046)    |    All years    | Individual |
 
-## `psidread` package helps {background-image="images/main.jpg"}
+## Geographic level of variables
+
+<p style="text-align: justify;">
+
+**Only state level residence is publicly open.** Finer levels including county, tract, block, zip code, MSA, CBSA and FIPS are all restricted. I'll explain the details of accessing details not before long.
+
+</p>
+
+## Sample Data Analysis(Male, No weight)
+
+```{r, include=FALSE}
+#|echo: false
+#assortative_mating_sample_research
+library(psidread)
+library(tidyverse)
+
+
+# fm_ratio_hat <- df %>% count(msa_title, NAICSP, wt=PWGTP) %>% left_join(fm_ratio_ind %>% select(-n), by="NAICSP") %>% 
+#   group_by(msa_title) %>% summarise(fm_ratio_hat = weighted.mean(fm_ratio_ind, w=n))
+
+
+varlist = c('p_major_2 || [19]ER34775 [21]ER34975',
+            'p_major_1 || [19]ER34774 [21]ER34974',
+            'p_degree || [19]ER34744 [21]ER34944',
+            'p_yr_college ||	[15]ER34334 [17]ER34533 [19]ER34733 [21]ER34933',
+            'p_age || [97]ER33404 [99]ER33504 [01]ER33604 [03]ER33704 [05]ER33804 [07]ER33904 [09]ER34004 [11]ER34104 [13]ER34204 [15]ER34305 [17]ER34504 [19]ER34704 [21]ER34904',
+            'p_hh_relation || [97]ER33403 [99]ER33503 [01]ER33603 [03]ER33703 [05]ER33803 [07]ER33903 [09]ER34003 [11]ER34103 [13]ER34203 [15]ER34303 [17]ER34503 [19]ER34703 [21]ER34903',
+            'hh_age || [97]ER10009 [99]ER13010 [01]ER17013 [03]ER21017 [05]ER25017 [07]ER36017 [09]ER42017 [11]ER47317 [13]ER53017 [15]ER60017 [17]ER66017 [19]ER72017 [21]ER78017',
+            'hh_sex || [97]ER10010 [99]ER13011 [01]ER17014 [03]ER21018 [05]ER25018 [07]ER36018 [09]ER42018 [11]ER47318 [13]ER53018 [15]ER60018 [17]ER66018 [19]ER72018 [21]ER78018',
+            'sp_age || [97]ER10011 [99]ER13012 [01]ER17015 [03]ER21019 [05]ER25019 [07]ER36019 [09]ER42019 [11]ER47319 [13]ER53019 [15]ER60019 [17]ER66019 [19]ER72019 [21]ER78019',
+            'sp_sex || 	[15]ER60020 [17]ER66020 [19]ER72020 [21]ER78020', 
+            'hh_job || [17]ER66195 [19]ER72195 [21]ER78198',
+            'hh_job_old || 	[03]ER21145 [05]ER25127 [07]ER36132 [09]ER42167 [11]ER47479 [13]ER53179 [15]ER60194',
+            'hh_ind || [17]ER66196 [19]ER72196 [21]ER78199',
+            'hh_ind_old || 	[03]ER21146 [05]ER25128 [07]ER36133 [09]ER42168 [11]ER47480 [13]ER53180 [15]ER60195',
+            'hh_first_job || [17]ER70945 [19]ER76963 [21]ER81191',
+            'hh_first_ind || [17]ER70946 [19]ER76964 [21]ER81192',
+            'sp_job || [17]ER66470 [19]ER72472 [21]ER78512',
+            'sp_job_old || 03]ER21395 [05]ER25385 [07]ER36390 [09]ER42419 [11]ER47736 [13]ER53442 [15]ER60457',
+            'sp_ind || [17]ER66471 [19]ER72473 [21]ER78513',
+            'sp_ind_old || [03]ER21396 [05]ER25386 [07]ER36391 [09]ER42420 [11]ER47737 [13]ER53443 [15]ER60458',
+            'sp_first_job || [17]ER70807 [19]ER76818 [21]ER81064',
+            'sp_first_ind || [17]ER70808 [19]ER76819 [21]ER81065',
+            'sp_father_ind || [17]ER70713 [19]ER76721 [21]ER80986',
+            'sp_mother_ind || [17]ER70723 [19]ER76731 [21]ER80996',
+            'f_new_head || [03]ER24153 [05]ER28052 [07]ER41042 [09]ER46986 [11]ER52410 [13]ER58228 [15]ER65464 [17]ER71543 [19]ER77604 [21]ER81931',
+            'f_new_spouse || [03]ER24154 [05]ER28053 [07]ER41043 [09]ER46987 [11]ER52411 [13]ER58229 [15]ER65465 [17]ER71544 [19]ER77605 [21]ER81932',
+            'f_residence || [97]ER12221 [99]ER13004 [01]ER17004 [03]ER21003 [05]ER25003 [07]ER36003 [09]ER42003 [11]ER47303 [13]ER53003 [15]ER60003 [17]ER66003 [19]ER72003 [21]ER78003',
+            'pair_id ||	[97]ER33407 [99]ER33507 [01]ER33607 [03]ER33707 [05]ER33807 [07]ER33907 [09]ER34007 [11]ER34107 [13]ER34207 [15]ER34308 [17]ER34507 [19]ER34707 [21]ER34907',
+            'hh_marst_old || [99]ER16423 [01]ER20369 [03]ER24150 [05]ER28049 [07]ER41039 [09]ER46983 [11]ER52407 [13]ER58225 [15]ER65461 [17]ER71540 [19]ER77601 [21]ER81928',
+            'hh_marst || [97]ER10016 [99]ER13021 [01]ER17024 [03]ER21023 [05]ER25023 [07]ER36023 [09]ER42023 [11]ER47323 [13]ER53023 [15]ER60024 [17]ER66024 [19]ER72024 [21]ER78025',
+            'fam_comp_change || [01]ER17007 [03]ER21007 [05]ER25007 [07]ER36007 [09]ER42007 [11]ER47307 [13]ER53007 [15]ER60007 [17]ER66007 [19]ER72007 [21]ER78007',
+            'marst_change || [99]ER16424 [01]ER20370 [03]ER24151 [05]ER28050 [07]ER41040 [09]ER46984 [11]ER52408 [13]ER58226 [15]ER65462 [17]ER71541 [19]ER77602 [21]ER81929',
+            'cross_perwt || [97]ER33438 [99]ER33547 [01]ER33639 [03]ER33742 [05]ER33849 [07]ER33951 [09]ER34046 [11]ER34155 [13]ER34269 [15]ER34414 [17]ER34651 [19]ER34864 [21]ER35065',
+            'long_perwt || [97]ER33430 [99]ER33546 [01]ER33637 [03]ER33740 [05]ER33848 [07]ER33950 [09]ER34045 [11]ER34154 [13]ER34268 [15]ER34413 [17]ER34650 [19]ER34863 [21]ER35064',
+            'long_famwt || [97]ER12084 [99]ER16518 [01]ER20394 [03]ER24179 [05]ER28078 [07]ER41069 [09]ER47012 [11]ER52436 [13]ER58257 [15]ER65492 [17]ER71570 [19]ER77631 [21]ER81958'
+            )
+
+
+str_df <- psid_str(
+  varlist = varlist, 
+  type = 'separated')
+
+
+# psid_unzip(indir = 'data', exdir = 'data', zipped =T,
+#            type = 'single', filename = 'J337466.zip')
+
+psid_df <- psid_read(indir = 'data', str_df = str_df, idvars = c('ER30000'), type = 'single', filename = 'J337466.zip')
+
+str(psid_df)
+
+df <- psid_reshape(psid_df = psid_df, str_df = str_df, shape = 'long', level = 'individual')
+fm_ratio_ind <- read_rds('data/fm_ratio_ind.rds')
+ind_share_nation <- read_rds('data/ind_share_nation.rds')
+fm_ratio_hat <- read_rds('data/fm_ratio_hat.rds')
+industry_code <- readxl::read_xls('data/census_industry.xls') %>% 
+  select(name, census_id, naicsp_id) %>% 
+  mutate(census_id = as.numeric(census_id))
+state_codes <- read_csv('data/psid_state_codes.csv')
+state_abbrev <- read_csv('data/US State Names.csv')
+ind_share_nation <- ind_share_nation %>% mutate(NAICSP = NAICSP %>% str_sub(start = 5))
+fm_ratio_ind <- fm_ratio_ind %>% mutate(NAICSP = NAICSP %>% str_sub(start = 5))
+
+df <- df %>% select(
+  -ER30000, -p_major_1, -p_major_2, -p_degree
+)
+
+df <- df %>% mutate(fid = pid%/%1000)
+
+df <- df %>% filter(rel2hh %in% c(10,20, 22))
+
+#fm_ratio_hat
+fm_ratio_hat <- fm_ratio_hat %>% left_join(state_abbrev, by = c('state' = 'Alpha')) %>% 
+  select(State, fm_ratio_hat) %>% 
+  filter(!is.na(State))
+
+
+df <- df %>% left_join(state_codes, by = c('f_residence' = 'ID'))
+
+df <- df %>% left_join(fm_ratio_hat, by = 'State')
+```
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 1, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = mean(hh_marst), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+  labs(title = 'female_ratio_hat vs married male household head ratio(no weight)', y = 'ratio of married male', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  facet_wrap( ~ year, scales = 'free_y') + 
+  theme_bw()
+
+```
+
+## Sample Data Analysis(Male, No weight)
+
+```{r}
+df %>% filter(hh_sex == 1, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = mean(hh_marst), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  labs(title = 'female_ratio_hat vs married male household head ratio(no weight)', y = 'ratio of married male', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  theme_bw()
+```
+
+## Sample Data Analysis(Male, Weighted)
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 1, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = weighted.mean(hh_marst, w = long_famwt, na.rm = T), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+  labs(title = 'female_ratio_hat vs married male household head ratio(weighted)', y = 'ratio of married male', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  facet_wrap( ~ year, scales = 'free_y') + 
+  theme_bw()
+```
+
+## Sample Data Analysis(Male, Weighted)
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 1, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = weighted.mean(hh_marst, w = long_famwt, na.rm = T), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+  labs(title = 'female_ratio_hat vs married male household head ratio(weighted)', y = 'ratio of married male', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  theme_bw()
+```
+
+## Sample Data Analysis(Female, No weight)
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 2, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = mean(hh_marst), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+  facet_wrap(~ year, scales = 'free_y') +
+  labs(title = 'female_ratio_hat vs married female household head ratio(no weight)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  theme_bw()
+```
+
+## Sample Data Analysis(Female, No weight)
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 2, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = mean(hh_marst), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+  labs(title = 'female_ratio_hat vs married female household head ratio(no weight)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  theme_bw()
+```
+
+## Sample Data Analysis(Female, Weighted)
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 2, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = weighted.mean(hh_marst, w = long_famwt), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+    facet_wrap(~ year, scales = 'free_y') +
+  labs(title = 'female_ratio_hat vs married female household head ratio(weighted)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  theme_bw()
+```
+
+## Sample Data Analysis(Female, Weighted)
+
+```{r}
+#|echo: false
+df %>% filter(hh_sex == 2, year != 1997) %>% group_by(year, State, fid) %>% top_n(1) %>% ungroup() %>% 
+  mutate(hh_marst = if_else(hh_marst == 1, 1, 0)) %>% group_by(year, State) %>% 
+  summarise(ratio = weighted.mean(hh_marst, w = long_famwt), fm_ratio_hat = mean(fm_ratio_hat)) %>% 
+  ggplot() +
+  geom_point(aes(fm_ratio_hat, ratio)) +
+  geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
+  labs(title = 'female_ratio_hat vs married female household head ratio(weighted)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  theme_bw()
+```
+
+## Package introduction and related progress
+
+[`psidread`](https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html) is a package written by Shuyi Qiu to help access PSID data in R. Although the PSID is the longest running longitudinal household survey data in the world, the process of converting raw PSID data files into datasets ready for analysis is quite complex.
+
+## Package introduction and related progress
+
+[`psidread`](https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html) helps
+
+<br>
 
 -   create a table of data structure across multiple waves using the text that can be copied and pasted from the website
 -   unzip and convert the zipped files without additional help of other software
@@ -69,13 +314,11 @@ What I did to check available waves is to search the variable content in the [da
 
 [For more information, please visit [the CRAN vignettes of the author](https://cran.r-project.org/web/packages/psidread/vignettes/my-vignette.html#1_Introduction).]{style="position: absolute; bottom: 10px; right: 10px; font-size: smaller; color: gray;"}
 
-## Downloading the data {background-image="images/main.jpg"}
+## Downloading the data
 
 ![psid data webpage](images/psid_data_center.png)
 
-# Actual use of the psidread package {background-image="images/title.png"}
-
-## DAG of `psidread` workflow {background-image="images/main.jpg"}
+## DAG of `psidread` workflow
 
 ::: columns
 ::: {.column width="30%"}
@@ -95,80 +338,17 @@ psid_str(varlist = psid_varlist)
 :::
 :::
 
-##  {background-image="images/main.jpg"}
+## Current Progress on `psidread`
 
-In our case,
+`psidread` is the only available package for now in R. (Several other packages including `psidr`, `easypsid` are outdated.)
 
-```{r}
-#| echo: true
-library(psidread)
+However, it returns handful of errors at most stages of its functions.
 
-input_directory <- 'data'
-output_directory <- 'data'
-str_df <- psid_str(
-  varlist = c('pair_id || 	[68]ER30005 [69]ER30024 [70]ER30047 [71]ER30071 [72]ER30095 [73]ER30121 [74]ER30142 [75]ER30164 [76]ER30192 [77]ER30221 [78]ER30250 [79]ER30287 [80]ER30317 [81]ER30347 [82]ER30377 [83]ER30405 [84]ER30435 [85]ER30469 [86]ER30504 [87]ER30541 [88]ER30576 [89]ER30612 [90]ER30648 [91]ER30695 [92]ER30739 [93]ER30812 [94]ER33107 [95]ER33207 [96]ER33307 [97]ER33407 [99]ER33507 [01]ER33607 [03]ER33707 [05]ER33807 [07]ER33907 [09]ER34007 [11]ER34107 [13]ER34207 [15]ER34308 [17]ER34507 [19]ER34707 [21]ER34907',
-              'hh_marst_old || [68]V239 [69]V607 [70]V1365 [71]V2072 [72]V2670 [73]V3181 [74]V3598 [75]V4053 [76]V4603 [77]V5650 [78]V6197 [79]V6790 [80]V7435 [81]V8087 [82]V8711 [83]V9419 [84]V11065 [85]V12426 [86]V13665 [87]V14712 [88]V16187 [89]V17565 [90]V18916 [91]V20216 [92]V21522 [93]V23336 [94]ER4159A [95]ER6999A [96]ER9250A [97]ER12223A [99]ER16423 [01]ER20369 [03]ER24150 [05]ER28049 [07]ER41039 [09]ER46983 [11]ER52407 [13]ER58225 [15]ER65461 [17]ER71540 [19]ER77601 [21]ER81928',
-              'hh_marst || [77]V5502 [78]V6034 [79]V6659 [80]V7261 [81]V7952 [82]V8603 [83]V9276 [84]V10426 [85]V11612 [86]V13017 [87]V14120 [88]V15136 [89]V16637 [90]V18055 [91]V19355 [92]V20657 [93]V22412 [94]ER2014 [95]ER5013 [96]ER7013 [97]ER10016 [99]ER13021 [01]ER17024 [03]ER21023 [05]ER25023 [07]ER36023 [09]ER42023 [11]ER47323 [13]ER53023 [15]ER60024 [17]ER66024 [19]ER72024 [21]ER78025',
-              'fam_comp_change || [69]V542 [70]V1109 [71]V1809 [72]V2410 [73]V3010 [74]V3410 [75]V3810 [76]V4310 [77]V5210 [78]V5710 [79]V6310 [80]V6910 [81]V7510 [82]V8210 [83]V8810 [84]V10010 [85]V11112 [86]V12510 [87]V13710 [88]V14810 [89]V16310 [90]V17710 [91]V19010 [92]V20310 [93]V21608 [94]ER2005A [95]ER5004A [96]ER7004A [97]ER10004A [99]ER13008A [01]ER17007 [03]ER21007 [05]ER25007 [07]ER36007 [09]ER42007 [11]ER47307 [13]ER53007 [15]ER60007 [17]ER66007 [19]ER72007 [21]ER78007',
-              'marst_change || [77]V5680 [78]V6219 [79]V6812 [80]V7455 [81]V8107 [82]V8731 [83]V9420 [84]V11066 [85]V12427 [86]V13666 [87]V14713 [88]V16188 [89]V17566 [90]V18917 [91]V20217 [92]V21523 [93]V23337 [94]ER4159B [95]ER6999B [96]ER9250B [97]ER12223B [99]ER16424 [01]ER20370 [03]ER24151 [05]ER28050 [07]ER41040 [09]ER46984 [11]ER52408 [13]ER58226 [15]ER65462 [17]ER71541 [19]ER77602 [21]ER81929',
-              'state || [68]V93 [69]V537 [70]V1103 [71]V1803 [72]V2403 [73]V3003 [74]V3403 [75]V3803 [76]V4303 [77]V5203 [78]V5703 [79]V6303 [80]V6903 [81]V7503 [82]V8203 [83]V8803 [84]V10003 [85]V11103 [86]V12503 [87]V13703 [88]V14803 [89]V16303 [90]V17703 [91]V19003 [92]V20303 [93]V21603 [94]ER4156 [95]ER6996 [96]ER9247 [97]ER12221 [99]ER13004 [01]ER17004 [03]ER21003 [05]ER25003 [07]ER36003 [09]ER42003 [11]ER47303 [13]ER53003 [15]ER60003 [17]ER66003 [19]ER72003 [21]ER78003'
-              )
-  
-)
+The issues on the singular data are now solved, but for some reason `psidread` is still giving me errors when using packaged data.
 
-```
+## Current Progress on `psidread`
 
-##  {background-image="images/main.jpg"}
-
-```{r}
-#| echo: true
-head(str_df)
-```
-
-## Marriage related Variables {background-image="images/main.jpg"}
-
-| Variable | Available years | Level |
-|:----:|:------------:|:------------------:|
-| [Marital Status(Head)](https://simba.isr.umich.edu/cb.aspx?vList=ER78025) |   1977-2021    |      Family       |
-| [Last known marital status](https://simba.isr.umich.edu/cb.aspx?vList=ER32049) |   All years(1968-2021)    |      Individual       |
-| [Married Pairs Indicator](https://simba.isr.umich.edu/cb.aspx?vList=ER34907) |   All years    |      Individual       |
-| [Change in Martial Status](https://simba.isr.umich.edu/cb.aspx?vList=ER81929) |   1977-2021    |      Family       |
-| [# of Marriages](https://simba.isr.umich.edu/cb.aspx?vList=ER32034) |   All years    |      Individual       |
-| [Month of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32035) |   All years    |      Individual       |
-| [Year of First Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32036) |   All years    |      Individual       |
-| [Month of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32040) |   All years    |      Individual       |
-| [Year of First Separation](https://simba.isr.umich.edu/cb.aspx?vList=ER32041) |   All years    |      Individual       |
-
-## Marriage related Variables {background-image="images/main.jpg"}
-
-| Variable | Available years | Level |
-|:----:|:------------:|:------------------:|
-| [Status of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32044) |   All years    |      Individual       |
-| [Month Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32047) |   All years    |      Individual       |
-| [Year Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32048) |   All years    |      Individual       |
-| [Month ended of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32045) |   All years    |      Individual       |
-| [Year ended of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32046) |   All years    |      Individual       |
-
-
-## Data Availability {background-image="images/main.jpg"}
-
-<p style="text-align: justify;">
-
-**Only state level residence is publicly open.** Finer levels including county, tract, block, zip code, MSA, CBSA and FIPS are all restricted. I explain the details of accessing details not before long.
-
-</p>
-
-## Current Progress {background-image="images/main.jpg"}
-
-`psidread` is the only available package for now. (Several other packages including `psidr`, `easypsid` are outdated.)
-
-However, it returns handful of errors at every stage of its functions.
-
-Last time I fixed issues with handling singular data, and I recently started fixing issues with handling packaged data.
-
-## Current Progress {background-image="images/main.jpg"}
-
-::: {.callout-tip title="`psidread::psid_read()`"}
+:::: {.callout-tip title="`psidread::psid_read()`"}
 ::: {style="height: 20px;"}
 :::
 
@@ -181,12 +361,13 @@ psid_df <- psid_read(indir = output_directory,
                      type = 'package',
                      filename = NA)
 ```
-:::
+::::
 
 <br> <!--   creates a vertical space(padding) -->
 
-```{r packagesetup}
+```{r}
 #| echo: false
+output_directory <- 'data'
 indir <- output_directory
 idvars <- c('ER30000')
 
@@ -253,7 +434,7 @@ famfid_yr <- unname(unlist(temp_env$key_tb |> dplyr::filter(year == yr) |> dplyr
 
 ```
 
-::: {.callout-tip title="Inside `psid_read()`"}
+:::: {.callout-tip title="Inside `psid_read()`"}
 ::: {style="height: 20px;"}
 :::
 
@@ -265,9 +446,15 @@ load(file = paste(indir,name_fam_df,sep="/"), envir = temp_env)
 
 
 ```
-:::
+::::
+Found that the package relies on additional *wealth data file*, while it seems like PSID is no longer providing the data.(I emailed psid data center days ago to ask if they still provide them.)
 
-## Application Process(PSID data) {background-image="images/main.jpg"}
+## Further investigation plan
+
+-   get access of the MSA level data
+-   check how I can utilize the individual-level data to perform data analysis
+
+## Application Process(PSID data)
 
 -   Contract must be made between user's institution and UMichigan
 -   Submit materials include
