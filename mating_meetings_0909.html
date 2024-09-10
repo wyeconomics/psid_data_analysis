@@ -3639,7 +3639,7 @@ Wooyong Park
 <section id="geographic-level-of-variables" class="slide level2">
 <h2>Geographic level of variables</h2>
 <p style="text-align: justify;">
-</p><p><strong>Only state level residence is publicly open.</strong> Finer levels including county, tract, block, zip code, MSA, CBSA and FIPS are all restricted. I’ll explain the details of accessing details not before long.</p>
+</p><p><strong>Only state level residence is publicly open.</strong> Finer levels including county, tract, block, zip code, MSA, and CBSA are all restricted. I’ll explain the details of applying for the data not before long.</p>
 <p></p>
 </section>
 <section id="sample-data-analysismale-no-weight" class="slide level2">
@@ -3711,6 +3711,7 @@ Wooyong Park
 2 2013 ER53017 ER34204
 3 2017 ER66017    &lt;NA&gt;</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>output_directory <span class="ot">&lt;-</span> <span class="st">'data'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
@@ -3736,13 +3737,13 @@ Wooyong Park
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>psid_df <span class="ot">&lt;-</span> <span class="fu">psid_read</span>(<span class="at">indir =</span> output_directory,</span>
-<span id="cb5-2"><a href=""></a>                     <span class="at">str_df =</span> str_df,</span>
-<span id="cb5-3"><a href=""></a>                     <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">'ER30000'</span>),</span>
-<span id="cb5-4"><a href=""></a>                     <span class="at">type =</span> <span class="st">'package'</span>,</span>
-<span id="cb5-5"><a href=""></a>                     <span class="at">filename =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>psid_df <span class="ot">&lt;-</span> <span class="fu">psid_read</span>(<span class="at">indir =</span> output_directory,</span>
+<span id="cb6-2"><a href=""></a>                     <span class="at">str_df =</span> str_df,</span>
+<span id="cb6-3"><a href=""></a>                     <span class="at">idvars =</span> <span class="fu">c</span>(<span class="st">'ER30000'</span>),</span>
+<span id="cb6-4"><a href=""></a>                     <span class="at">type =</span> <span class="st">'package'</span>,</span>
+<span id="cb6-5"><a href=""></a>                     <span class="at">filename =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'output_directory' not found</code></pre>
+<pre><code>Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection</code></pre>
 </div>
 </div>
 </div>
@@ -3764,8 +3765,8 @@ Wooyong Park
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>name_fam_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> indir, <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="st">".*fam"</span>,yr,<span class="st">".*</span><span class="sc">\\</span><span class="st">.rda"</span>,<span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb7-2"><a href=""></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste</span>(indir,name_fam_df,<span class="at">sep=</span><span class="st">"/"</span>), <span class="at">envir =</span> temp_env)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>name_fam_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> indir, <span class="at">pattern =</span> <span class="fu">paste</span>(<span class="st">".*wlth"</span>,yr,<span class="st">".*</span><span class="sc">\\</span><span class="st">.rda"</span>,<span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb8-2"><a href=""></a><span class="fu">load</span>(<span class="at">file =</span> <span class="fu">paste</span>(indir,name_fam_df,<span class="at">sep=</span><span class="st">"/"</span>), <span class="at">envir =</span> temp_env)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in readChar(con, 5L, useBytes = TRUE): cannot open the connection</code></pre>
 </div>
@@ -3789,7 +3790,7 @@ Wooyong Park
 <li>Contract must be made between user’s institution and UMichigan</li>
 <li>Submit materials include
 <ul>
-<li>CV</li>
+<li>CV(of a Dr+)</li>
 <li>Resarch plan(justification of such use)</li>
 <li>IRB approval</li>
 <li>Data request form</li>

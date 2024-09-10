@@ -78,7 +78,7 @@ Variable names should be modified and be processed so that the researcher can us
 
 <p style="text-align: justify;">
 
-**Only state level residence is publicly open.** Finer levels including county, tract, block, zip code, MSA, CBSA and FIPS are all restricted. I'll explain the details of accessing details not before long.
+**Only state level residence is publicly open.** Finer levels including county, tract, block, zip code, MSA, and CBSA are all restricted. I'll explain the details of applying for the data not before long.
 
 </p>
 
@@ -334,6 +334,7 @@ library(psidread)
 psid_varlist = c(" hh_age || [13]ER53017 [17]ER66017",
                  " p_age || [13]ER34204")
 psid_str(varlist = psid_varlist)
+output_directory <- 'data'
 ```
 :::
 :::
@@ -441,7 +442,7 @@ famfid_yr <- unname(unlist(temp_env$key_tb |> dplyr::filter(year == yr) |> dplyr
 ```{r}
 #| echo: true
 #| error: true
-name_fam_df <- list.files(path = indir, pattern = paste(".*fam",yr,".*\\.rda",sep = ""))
+name_fam_df <- list.files(path = indir, pattern = paste(".*wlth",yr,".*\\.rda",sep = ""))
 load(file = paste(indir,name_fam_df,sep="/"), envir = temp_env)
 
 
@@ -458,7 +459,7 @@ Found that the package relies on additional *wealth data file*, while it seems l
 
 -   Contract must be made between user's institution and UMichigan
 -   Submit materials include
-    -   CV
+    -   CV(of a Dr+)
     -   Resarch plan(justification of such use)
     -   IRB approval
     -   Data request form
