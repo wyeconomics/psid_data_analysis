@@ -6,7 +6,7 @@ format:
   revealjs:
     footer: "Assortative Mating in Cities"
     title-slide-attributes: 
-      data-background-image: images/title.png
+      data-background-image: images/main.jpg
     transition: slide
     fontsize: 24pt
 ---
@@ -460,7 +460,7 @@ Found that the package relies on additional *wealth data file*, while it seems l
 -   Contract must be made between user's institution and UMichigan
 -   Submit materials include
     -   CV(of a Dr+)
-    -   Resarch plan(justification of such use)
+    -   Research plan(justification of such use)
     -   IRB approval
     -   Data request form
     -   Virtual Data Enclave acceptable use policy
