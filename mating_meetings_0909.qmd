@@ -1,5 +1,5 @@
 ---
-title: "Progress Report"
+title: "Meeting Slides"
 author: "Wooyong Park"
 date: '2024-09-11'
 format: 
@@ -7,7 +7,7 @@ format:
     footer: "Assortative Mating in Cities"
     title-slide-attributes: 
       data-background-image: images/title.png
-    #transition: slide
+    transition: slide
     fontsize: 24pt
 ---
 
@@ -261,8 +261,8 @@ df %>% filter(hh_sex == 2, year != 1997) %>% group_by(year, State, fid) %>% top_
   ggplot() +
   geom_point(aes(fm_ratio_hat, ratio)) +
   geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
-  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
-  labs(title = 'female_ratio_hat vs married female household head ratio(no weight)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%'), limits = c(0,0.2)) + 
+  labs(title = 'female_ratio_hat vs married female household head ratio(no weight)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.\n 10 rows above 20% removed') +
   theme_bw()
 ```
 
@@ -292,8 +292,8 @@ df %>% filter(hh_sex == 2, year != 1997) %>% group_by(year, State, fid) %>% top_
   ggplot() +
   geom_point(aes(fm_ratio_hat, ratio)) +
   geom_smooth(aes(fm_ratio_hat, ratio), method = 'lm') +
-  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%')) + 
-  labs(title = 'female_ratio_hat vs married female household head ratio(weighted)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.') +
+  scale_y_continuous(labels = scales::label_comma(scale=100, suffix = '%'), limits = c(0,0.2)) + 
+  labs(title = 'female_ratio_hat vs married female household head ratio(weighted)', y = 'ratio of married female', caption = 'Each point represents U.S. states, and note that only the information on family head is included.\n7 rows above 20% removed') +
   theme_bw()
 ```
 
