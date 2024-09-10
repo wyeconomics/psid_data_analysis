@@ -334,7 +334,6 @@ library(psidread)
 psid_varlist = c(" hh_age || [13]ER53017 [17]ER66017",
                  " p_age || [13]ER34204")
 psid_str(varlist = psid_varlist)
-output_directory <- 'data'
 ```
 :::
 :::
@@ -356,7 +355,7 @@ The issues on the singular data are now solved, but for some reason `psidread` i
 ```{r}
 #| echo: true
 #| error: true 
-psid_df <- psid_read(indir = output_directory,
+psid_df <- psid_read(indir = 'data',
                      str_df = str_df,
                      idvars = c('ER30000'),
                      type = 'package',
@@ -442,8 +441,8 @@ famfid_yr <- unname(unlist(temp_env$key_tb |> dplyr::filter(year == yr) |> dplyr
 ```{r}
 #| echo: true
 #| error: true
-name_fam_df <- list.files(path = indir, pattern = paste(".*wlth",yr,".*\\.rda",sep = ""))
-load(file = paste(indir,name_fam_df,sep="/"), envir = temp_env)
+name_wlth_df <- list.files(path = indir, pattern = paste(".*wlth",yr,".*\\.rda",sep = ""))
+load(file = paste(indir,name_wlth_df,sep="/"), envir = temp_env)
 
 
 ```
