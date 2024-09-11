@@ -20,10 +20,15 @@ format:
 <!-- ## Overview -->
 
 <!-- -   How the PSID dataset looks like -->
+
 <!-- -   Marriage Related Variables and Availability -->
+
 <!-- -   Sample Data Analysis(State Level) -->
+
 <!-- -   Package Introduction and Progress -->
+
 <!-- -   Further Investigation Plan -->
+
 <!-- -   Data Application Process -->
 
 This is what the raw dataset looks like
@@ -37,6 +42,7 @@ load('data/fam2021er.rda')
 head(fam2021er)
 
 ```
+
 <a href="https://simba.isr.umich.edu/default.aspx" style="position: absolute; bottom: 10px; right: 10px; font-size: smaller; color: blue;">PSID Data Center</a>
 
 ## 
@@ -53,7 +59,7 @@ Variable names should be modified and be processed so that the researcher can us
 ## Marriage related variables and availability
 
 |                                    Variable                                    | Available years |   Level    |
-|:---------------------------------------:|:--------------:|:--------------:|
+|:------------------------------------------------------------------------------:|:---------------:|:----------:|
 |   [Marital Status(Head)](https://simba.isr.umich.edu/cb.aspx?vList=ER78025)    |    1977-2021    |   Family   |
 | [Last known marital status](https://simba.isr.umich.edu/cb.aspx?vList=ER32049) |    All years    | Individual |
 |  [Married Pairs Indicator](https://simba.isr.umich.edu/cb.aspx?vList=ER34907)  |    All years    | Individual |
@@ -67,7 +73,7 @@ Variable names should be modified and be processed so that the researcher can us
 ## Marriage related variables and availability
 
 |                                           Variable                                           | Available years |   Level    |
-|:-----------------------------------------:|:-------------:|:-------------:|
+|:--------------------------------------------------------------------------------------------:|:---------------:|:----------:|
 |     [Status of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32044)      |    All years    | Individual |
 | [Month Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32047) |    All years    | Individual |
 | [Year Separated of Most Recent Marriage](https://simba.isr.umich.edu/cb.aspx?vList=ER32048)  |    All years    | Individual |
@@ -348,7 +354,7 @@ The issues on the singular data are now solved, but for some reason `psidread` i
 
 ## Current Progress on `psidread`
 
-:::: {.callout-tip title="`psidread::psid_read()`"}
+::: {.callout-tip title="`psidread::psid_read()`"}
 ::: {style="height: 20px;"}
 :::
 
@@ -361,7 +367,7 @@ psid_df <- psid_read(indir = 'data',
                      type = 'package',
                      filename = NA)
 ```
-::::
+:::
 
 <br> <!--   creates a vertical space(padding) -->
 
@@ -434,7 +440,7 @@ famfid_yr <- unname(unlist(temp_env$key_tb |> dplyr::filter(year == yr) |> dplyr
 
 ```
 
-:::: {.callout-tip title="Inside `psid_read()`"}
+::: {.callout-tip title="Inside `psid_read()`"}
 ::: {style="height: 20px;"}
 :::
 
@@ -446,7 +452,8 @@ load(file = paste(indir,name_wlth_df,sep="/"), envir = temp_env)
 
 
 ```
-::::
+:::
+
 Found that the package relies on additional *wealth data file*, while it seems like PSID is no longer providing the data.(I emailed psid data center days ago to ask if they still provide them.)
 
 ## Further investigation plan
